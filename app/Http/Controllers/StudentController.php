@@ -16,8 +16,8 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('students.index', compact('students'));
-        // return view('students.index',['studenti'->$students]);
+        // return view('students.index', compact('students'));
+        return view('students.index',['students'=>$students]);
     }
 
     /**
@@ -27,7 +27,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return "di nuovo ciao";
+        return view('students.create');
     }
 
     /**
