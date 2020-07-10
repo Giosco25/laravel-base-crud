@@ -18,19 +18,19 @@
                     @endif
                     <div class="form-group">
                         <label for="text">Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ $student->name }}" id="text" placeholder="Insert your name">
+                        <input type="text" name="name" class="form-control" value="{{ old('name', $student->name) }}" id="text" placeholder="Insert your name">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Lastname</label>
-                        <input type="text" name="lastname" class="form-control" value="{{ $student->lastname }}" id="lastname"  placeholder="Insert your lastname">
+                        <input type="text" name="lastname" class="form-control" value="{{ old('lastname', $student->lastname) }}" id="lastname"  placeholder="Insert your lastname">
                     </div>
                     <div class="form-group">
                         <label for="serialNumber">Serial Number</label>
-                        <input type="text" name="serial_number" class="form-control" id="serialNumber" value="{{ $student->serial_number }}"  placeholder="Insert your serial number">
+                        <input type="text" name="serial_number" class="form-control" value="{{ old('serial_number', $student->serial_number) }}" id="serialNumber"  placeholder="Insert your serial number">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="{{ $student->email }}" aria-describedby="emailHelp" placeholder="Insert your email">
+                        <input type="email" name="email" class="form-control" value="{{ old('email', $student->email) }}" id="exampleInputEmail1"  aria-describedby="emailHelp" placeholder="Insert your email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                       <button type="submit" class="btn btn-primary">Modifica</button>
