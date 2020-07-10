@@ -38,7 +38,17 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:200',
+            'lastname' =>'required|max:200',
+            'email' => 'email:rfc,dns',
+            'serial_number' => 'required|alpha_num'
+        ]);
+        $student = $request->all();
+        $nuovo_studente = new Student();
+        $nuovo_studente -> fill($student);
+        $nuovo_studente -> save();
+        return redirect()->route('students.index');
     }
 
     /**
@@ -49,7 +59,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.show', compact('student'));
     }
 
     /**
@@ -60,7 +71,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -70,9 +82,17 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:200',
+            'lastname' =>'required|max:200',
+            'email' => 'email:rfc,dns',
+            'serial_number' => 'required|alpha_num'
+        ]);
+        $edited = $request->all();
+        $student->update($edited);
+        return redirect()->route('students.show', compact('student'));
     }
 
     /**
@@ -81,8 +101,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('students.index');
     }
 }
